@@ -58,12 +58,16 @@ A `torch.tensor` is also a matrix-like object containing data, similar to NumPy 
 * Create a tensor
     ```
         b1 = torch.tensor([[[1, 2, 3], [4, 5, 6]]])
-    
-        # check the shape by size()
-        b1.size()    // torch.Size([1, 2, 3])
+    ```
+* Some frequently-used functions you can use
+    ```
+        b1.size()               // to check to size of the tensor
+        b1.view((shape))        // same as reshape in numpy
+        b1.squeeze(dim)         // reduce the dimensions with size = 1
+        b1.unsqueeze(dim)       // insert a new dimension with size = 1  
     ```
     
-* Most manipulation functions are similar to that of NumPy, we ommitted here for simplification. For more information, please check the PyTorch documentation: https://pytorch.org/docs/stable/tensors.html
+* Other manipulation functions are similar to that of NumPy, we omitted it here for simplification. For more information, please check the PyTorch documentation: https://pytorch.org/docs/stable/tensors.html
 
 ### Autograd
 
