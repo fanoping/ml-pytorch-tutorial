@@ -32,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/mnist_pytorch.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
-              <selected id="0" />
+              <selected id="20" />
             </state>
           </provider>
         </entry>
@@ -156,12 +156,12 @@
       <workItem from="1552385810081" duration="18000" />
       <workItem from="1552387911043" duration="884000" />
       <workItem from="1552389551884" duration="8393000" />
-      <workItem from="1552401754569" duration="5134000" />
+      <workItem from="1552401754569" duration="5385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17458000" />
+    <option name="totallyTimeSpent" value="17709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -253,7 +253,7 @@
     <entry file="file://$PROJECT_DIR$/mnist_pytorch.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="0" />
+          <selected id="20" />
         </state>
       </provider>
     </entry>
