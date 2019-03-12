@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="925ff3e8-5f7f-4a6c-94e3-9c058da7abd5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mnist_pytorch.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/mnist_pytorch.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="925ff3e8-5f7f-4a6c-94e3-9c058da7abd5" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,12 +154,12 @@
       <workItem from="1552385810081" duration="18000" />
       <workItem from="1552387911043" duration="884000" />
       <workItem from="1552389551884" duration="8393000" />
-      <workItem from="1552401754569" duration="5385000" />
+      <workItem from="1552401754569" duration="5578000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17709000" />
+    <option name="totallyTimeSpent" value="17902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
