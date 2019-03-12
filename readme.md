@@ -117,4 +117,4 @@ For example:
     ```
 
 ## Start building a model
-See example: [link]()
+See example: [link](https://github.com/fanoping/ml-pytorch-tutorial/blob/master/mnist_pytorch.ipynb)
