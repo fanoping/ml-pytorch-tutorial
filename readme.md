@@ -107,9 +107,9 @@ For example:
         
         x2 = torch.tensor([[1., 2.],
                            [3., 4.]], requires_grad=True)
-      # x2.grad 			None 
-      # x2.grad_fn 			None
-      # x2.is_leaf 			True
+      # x2.grad             None 
+      # x2.grad_fn          None
+      # x2.is_leaf          True
       # x2.requires_grad    True
     ```
 
@@ -124,7 +124,7 @@ For example:
       # x2.grad             None 
       # x2.grad_fn          <SumBackward0>
       # x2.is_leaf          False
-      # x2.requires_grad.   True
+      # x2.requires_grad    True
     ```
 
 * Call `backward()` function to compute gradients automatically
