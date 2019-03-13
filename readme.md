@@ -128,22 +128,14 @@ For example:
     ```
 
     Note: If we view `x1` as 
-    $$
-    X_1=
-      \left[ {\begin{array}{cc}
-       x_1 & x_2 \\
-       x_3 & x_4 \\
-      \end{array} } \right]
-    $$
+
+    ![equation](https://latex.codecogs.com/svg.latex?%5Clarge%20X_1%3D%20%5Cleft%5B%20%7B%5Cbegin%7Barray%7D%7Bcc%7D%20x_1%20%26%20x_2%20%5C%5C%20x_3%20%26%20x_4%20%5C%5C%20%5Cend%7Barray%7D%20%7D%20%5Cright%5D)
+
     ​           and view `x2` as 
-    $$
-    X_2=
-      \left[ {\begin{array}{cc}
-       x_5 & x_6 \\
-       x_7 & x_8 \\
-      \end{array} } \right]
-    $$
-    ​           Then `z` is equvilant to $$z=\frac{1}{2}(x_1+x_2+x_3+x_4)+(x_5+x_6+x_7+x_8)​$$
+
+    ![equation](https://latex.codecogs.com/svg.latex?%5Clarge%20X_2%3D%20%5Cleft%5B%20%7B%5Cbegin%7Barray%7D%7Bcc%7D%20x_5%20%26%20x_6%20%5C%5C%20x_7%20%26%20x_8%20%5C%5C%20%5Cend%7Barray%7D%20%7D%20%5Cright%5D)
+
+    ​           Then `z` is equvilant to ![equation](https://latex.codecogs.com/svg.latex?%5Clarge%20z%3D%5Cfrac%7B1%7D%7B2%7D%28x_1&plus;x_2&plus;x_3&plus;x_4%29&plus;%28x_5&plus;x_6&plus;x_7&plus;x_8%29)
 
 * Call `backward()` function to compute gradients automatically
 
@@ -154,9 +146,8 @@ For example:
     `z.backward()` is actually just the derivative of z with respect to inputs (tensors whose `is_leaf` and `requires_grad` both equals `True`)
 
     For example, if we want to know the derivative of `z` with respect to `x_1`, it is:
-    $$
-    \frac{\partial z}{\partial x_1}=0.5
-    $$
+
+    ![equation](https://latex.codecogs.com/svg.latex?%5Clarge%20%5Cfrac%7B%5Cpartial%20z%7D%7B%5Cpartial%20x_1%7D%3D0.5)
 
 * Check the gradients using `.grad`
 
