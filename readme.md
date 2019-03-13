@@ -127,21 +127,46 @@ For example:
       # x2.requires_grad    True
     ```
 
+    Note: If we view `x1` as 
+    $$
+    X_1=
+      \left[ {\begin{array}{cc}
+       x_1 & x_2 \\
+       x_3 & x_4 \\
+      \end{array} } \right]
+    $$
+    ​           and view `x2` as 
+    $$
+    X_2=
+      \left[ {\begin{array}{cc}
+       x_5 & x_6 \\
+       x_7 & x_8 \\
+      \end{array} } \right]
+    $$
+    ​           Then `z` is equvilant to $$z=\frac{1}{2}(x_1+x_2+x_3+x_4)+(x_5+x_6+x_7+x_8)​$$
+
 * Call `backward()` function to compute gradients automatically
-  
+
     ```python
         z.backward()	# this is identical to calling z.backward(torch.tensor(1.))
     ```
 
+    `z.backward()` is actually just the derivative of z with respect to inputs (tensors whose `is_leaf` and `requires_grad` both equals `True`)
+
+    For example, if we want to know the derivative of `z` with respect to `x_1`, it is:
+    $$
+    \frac{\partial z}{\partial x_1}=0.5
+    $$
+
 * Check the gradients using `.grad`
-  
+
     ```python
         x1.grad
         x2.grad
     ```
-    
+
     Output will be something like this
-    
+
     ```python
         tensor([[[0.5000, 0.5000],        # x1.grad
                  [0.5000, 0.5000]]])
@@ -229,7 +254,6 @@ Pytorch provides an `nn.Module` for easy definition of a model. A simple CNN mod
 ```python
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 class MyNet(nn.Module):
     def __init__(self):
