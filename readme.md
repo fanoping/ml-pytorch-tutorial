@@ -149,7 +149,10 @@ For example:
                  [1., 1.]]])
     ```
 
+More in-depth explanation of Autograd can be found in this awesome youtube video: [Link](https://youtu.be/MswxJw-8PvE)
+
 ## Start building a model
+
 ### Dataset class
 
 Pytorch provides a convenient way for interacting with datasets by `torch.utils.data.Dataset`, an abstract class representing a dataset. When datasets are large, the RAM on our machine may not be large enough to fit all the data at once. Instead, we load only a portion of the data when needed, and move it back to disk when finished using.
