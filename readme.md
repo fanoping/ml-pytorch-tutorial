@@ -65,7 +65,7 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
     ```python
         b1.size()               # to check to size of the tensor
                                 # torch.Size([1, 2, 3])
-        b1.view((1, 3, 2))      # same as reshape in numpy
+        b1.view((1, 3, 2))      # same as reshape in numpy (same underlying data, different interpretations)
                                 # tensor([[[1, 2],
                                 #          [3, 4],
                                 #          [5, 6]]])
@@ -150,4 +150,108 @@ For example:
     ```
 
 ## Start building a model
-See example: [link](https://github.com/fanoping/ml-pytorch-tutorial/blob/master/mnist_pytorch.ipynb)
+### Dataset class
+
+Pytorch provides a convenient way for interacting with datasets by `torch.utils.data.Dataset`, an abstract class representing a dataset. When datasets are large, the RAM on our machine may not be large enough to fit all the data at once. Instead, we load only a portion of the data when needed, and move it back to disk when finished using.
+
+A simple dataset is created as follows:	
+
+```python
+import csv 
+from torch.utils.data import Dataset
+
+class MyDataset(Dataset):
+    def __init__(self, label_path):
+        """
+        let's assume the csv is as follows:
+        ================================
+        image_path                 label
+        imgs/001.png               1     
+        imgs/002.png               0     
+        imgs/003.png               2     
+        imgs/004.png               1     
+                      .
+                      .
+                      .
+        ================================
+       	And we define a function parse_csv() that parses the csv into a list of tuples 
+       	[('imgs/001.png', 1), ('imgs/002.png', 0)...]
+        """		
+        self.label = parse_csv()
+       
+    def __len__(self):
+        return len(self.labels)
+    
+    def __getitem__(self, idx):
+        img_path, label = self.label[idx]
+       	
+        # imread: a function that reads an image from path
+        
+        img = imread(img_path)
+        
+        # some operations/transformations
+        
+        return torch.tensor(img), torch.tensor(label)
+        
+```
+
+Note that `MyDataset` inherits `Dataset`. If we look at the [source code](https://pytorch.org/docs/stable/_modules/torch/utils/data/dataset.html#Dataset), we can see that the default behavior of `__len__` and `__getitem__` is to raise a `NotImplementedError`, meaning that we should override them every time we create a custom dataset. 
+
+###Dataloader
+
+We can iterate through the dataset with a `for` loop, but we cannot shuffle, batch or load the data in parallel. `torch.utils.data.Dataloader` is an iterator which provides all those features. We can specify the batch size, whether to shuffle the data, and number of workers to load the data. 
+
+```python
+from torch.utils.data import DataLoader
+
+dataset = MydDataset('/imgs')
+dataloader = DataLoader(dataset, batch_size=32, shuffle=True, num_workers=4)
+
+for batch_id, batch in enumerate(dataloader):
+    imgs, labels = batch
+    
+    """
+    do something for each batch
+    ex: 
+        output = model(imgs) 
+        loss = cross_entropy(output, labels)
+    """
+
+```
+
+### Model
+
+Pytorch provides an `nn.Module` for easy definition of a model. A simple CNN model is defined as such:
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class MyNet(nn.Module):
+    def __init__(self):
+        super(MyNet, self).__init__() # call parent __init__ function
+        self.fc = nn.Sequential(
+            nn.Linear(784, 128),
+            nn.ReLU(inplace=True),
+            nn.Linear(128, 64),
+            nn.ReLU(inplace=True),
+            nn.Linear(64, 10),
+        )
+        self.output = nn.Softmax(dim=1)
+       
+    def forward(self, x):
+        # You can modify your model connection whatever you like
+        out = self.fc(x.view(-1, 28*28))
+        out = self.output(out)
+        return out        
+```
+
+We let our model inherit from the `nn.Module` class. But why do we need to call `super` in the `__init__` function whereas in the `Dataset` case we don't ? If we look at the [source code](https://pytorch.org/docs/stable/_modules/torch/nn/modules/module.html#Module) of `nn.Module` we can see that there are certain attributes needed in order for the model to work. In the case of `Dataset`, there is no `__init__` function, so no `super` is needed.
+
+In addition, `forward` is also by default not implemented, so we need to override it with our own forward propagation function. 
+
+### Example
+
+A full example of a MNIST classifier: [Link](https://github.com/fanoping/ml-pytorch-tutorial/blob/master/mnist_pytorch.ipynb)
+
