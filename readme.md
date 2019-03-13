@@ -64,17 +64,17 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
 * Some frequently-used functions you can use
     ```python
         b1.size()               # to check to size of the tensor
-        						# torch.Size([1, 2, 3])
+                                # torch.Size([1, 2, 3])
         b1.view((1, 3, 2))      # same as reshape in numpy
-        						# tensor([[[1, 2],
-             					#          [3, 4],
-             					#          [5, 6]]])
-        b1.squeeze()    		# removes all the dimensions of size 1 
-        						# tensor([[1, 2, 3],
-            					#         [4, 5, 6]])
-        b1.unsqueeze()      	# inserts a new dimension of size one in a specific position
-        						# tensor([[[[1, 2, 3],
-              					#           [4, 5, 6]]]])
+                                # tensor([[[1, 2],
+                                #          [3, 4],
+                                #          [5, 6]]])
+        b1.squeeze()            # removes all the dimensions of size 1 
+                                # tensor([[1, 2, 3],
+                                #         [4, 5, 6]])
+        b1.unsqueeze()          # inserts a new dimension of size one in a specific position
+                                # tensor([[[[1, 2, 3],
+                                #           [4, 5, 6]]]])
     ```
 
 * Other manipulation functions are similar to that of NumPy, we omitted it here for simplification. For more information, please check the PyTorch documentation: https://pytorch.org/docs/stable/tensors.html
@@ -84,7 +84,7 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
 - Some important attributes of `torch.tensor`
 
 - ```python
-        b1.grad	                # gradient of the tensor
+        b1.grad                 # gradient of the tensor
         b1.grad_fn              # the gradient function the tensor
         b1.is_leaf              # check if tensor is a leaf node of the graph
         b1.requires_grad        # if set to True, starts tracking all operations performed
@@ -103,14 +103,14 @@ For example:
       # x1.grad 			None 
       # x1.grad_fn 			None
       # x1.is_leaf 			True
-      # x1.requires_grad	True
+      # x1.requires_grad    True
         
         x2 = torch.tensor([[1., 2.],
                            [3., 4.]], requires_grad=True)
       # x2.grad 			None 
       # x2.grad_fn 			None
       # x2.is_leaf 			True
-      # x2.requires_grad	True
+      # x2.requires_grad    True
     ```
 
     It also enables the tensor to do gradient computations later on.
