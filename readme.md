@@ -79,11 +79,11 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
 
 * Other manipulation functions are similar to that of NumPy, we omitted it here for simplification. For more information, please check the PyTorch documentation: https://pytorch.org/docs/stable/tensors.html
 
-###Tensor Attributes
+### Tensor Attributes
 
 - Some important attributes of `torch.tensor`
 
-- ```python
+-   ```python
         b1.grad                 # gradient of the tensor
         b1.grad_fn              # the gradient function the tensor
         b1.is_leaf              # check if tensor is a leaf node of the graph
