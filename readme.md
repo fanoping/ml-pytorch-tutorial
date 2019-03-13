@@ -21,32 +21,32 @@ Some useful functions that you may use for managing your training data. We **mus
   
    Note that the shape of array in the sequence should be the same except the dimension corresponds to the axis.
    
-   ```
+   ```python
        # concatenate two array
-       a1 = np.array([[1, 2], [3, 4], [5, 6]])    // shape: (3, 2)
-       a2 = np.array([[3, 4], [5, 6], [7, 8]])    // shape: (3, 2)
+       a1 = np.array([[1, 2], [3, 4], [5, 6]])    # shape: (3, 2)
+       a2 = np.array([[3, 4], [5, 6], [7, 8]])    # shape: (3, 2)
 
        # along the axis = 0
-       a3 = np.concatenate((a1, a2), axis=0)      // shape: (6, 4)
+       a3 = np.concatenate((a1, a2), axis=0)      # shape: (6, 4)
    
        # along the axis = 1
-       a4 = np.concatenate((a1, a2), axis=1)      // shape: (3, 4)
+       a4 = np.concatenate((a1, a2), axis=1)      # shape: (3, 4)
    ```
    
 * `np.transpose(arr, axis)`
   
    Mostly we use it to align the dimension of our data.
-   ```
+   ```python
        # transpose 2D array
-       a5 = np.array([[1, 2], [3, 4], [5, 6]])    // shape: (3, 2)
-       np.transpose(a5)                           // shape: (2, 3)
+       a5 = np.array([[1, 2], [3, 4], [5, 6]])    # shape: (3, 2)
+       np.transpose(a5)                           # shape: (2, 3)
    ```
    
    We can also permute multiple axis of the array.
    
-   ```
-       a6 = np.array([[[1, 2], [3, 4], [5, 6]]])  // shape: (1, 3, 2)
-       np.transpose((a6), axes=(2, 1, 0))         // shape: (2, 3, 1)
+   ```python
+       a6 = np.array([[[1, 2], [3, 4], [5, 6]]])  # shape: (1, 3, 2)
+       np.transpose((a6), axes=(2, 1, 0))         # shape: (2, 3, 1)
    ```
    
 ## PyTorch
@@ -67,14 +67,14 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
         						# torch.Size([1, 2, 3])
         b1.view((1, 3, 2))      # same as reshape in numpy
         						# tensor([[[1, 2],
-             					#		   [3, 4],
-             					#		   [5, 6]]])
+             					#          [3, 4],
+             					#          [5, 6]]])
         b1.squeeze()    		# removes all the dimensions of size 1 
         						# tensor([[1, 2, 3],
-            					#		  [4, 5, 6]])
+            					#         [4, 5, 6]])
         b1.unsqueeze()      	# inserts a new dimension of size one in a specific position
         						# tensor([[[[1, 2, 3],
-              					#			[4, 5, 6]]]])
+              					#           [4, 5, 6]]]])
     ```
 
 * Other manipulation functions are similar to that of NumPy, we omitted it here for simplification. For more information, please check the PyTorch documentation: https://pytorch.org/docs/stable/tensors.html
@@ -84,11 +84,11 @@ A `torch.tensor` is conceptually identical to a numpy array, but with GPU suppor
 - Some important attributes of `torch.tensor`
 
 - ```python
-      b1.grad					# gradient of the tensor
-      b1.grad_fn				# the gradient function the tensor
-      b1.is_leaf				# check if tensor is a leaf node of the graph
-      b1.requires_grad		# if set to True, starts tracking all operations performed
-  ```
+        b1.grad	                # gradient of the tensor
+        b1.grad_fn              # the gradient function the tensor
+        b1.is_leaf              # check if tensor is a leaf node of the graph
+        b1.requires_grad        # if set to True, starts tracking all operations performed
+    ```
 
 ### Autograd
 
@@ -121,10 +121,10 @@ For example:
 
     ```python
         z = (0.5 * x1 + x2).sum()
-      # x2.grad 			None 
-      # x2.grad_fn 			<SumBackward0>
-      # x2.is_leaf 			False
-      # x2.requires_grad	True
+      # x2.grad             None 
+      # x2.grad_fn          <SumBackward0>
+      # x2.is_leaf          False
+      # x2.requires_grad.   True
     ```
 
 * Call `backward()` function to compute gradients automatically
@@ -135,17 +135,17 @@ For example:
 
 * Check the gradients using `.grad`
   
-    ```
+    ```python
         x1.grad
         x2.grad
     ```
     
     Output will be something like this
     
-    ```
-        tensor([[[0.5000, 0.5000],        // x1.grad
+    ```python
+        tensor([[[0.5000, 0.5000],        # x1.grad
                  [0.5000, 0.5000]]])
-        tensor([[[1., 1.],                // x2.grad
+        tensor([[[1., 1.],                # x2.grad
                  [1., 1.]]])
     ```
 
