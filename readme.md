@@ -100,9 +100,9 @@ For example:
     ```python
         x1 = torch.tensor([[1., 2.],
                            [3., 4.]], requires_grad=True)
-      # x1.grad 			None 
-      # x1.grad_fn 			None
-      # x1.is_leaf 			True
+      # x1.grad             None 
+      # x1.grad_fn          None
+      # x1.is_leaf          True
       # x1.requires_grad    True
         
         x2 = torch.tensor([[1., 2.],
