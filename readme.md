@@ -27,7 +27,7 @@ Some useful functions that you may use for managing your training data. We **mus
        a2 = np.array([[3, 4], [5, 6], [7, 8]])    # shape: (3, 2)
 
        # along the axis = 0
-       a3 = np.concatenate((a1, a2), axis=0)      # shape: (6, 4)
+       a3 = np.concatenate((a1, a2), axis=0)      # shape: (6, 2)
    
        # along the axis = 1
        a4 = np.concatenate((a1, a2), axis=1)      # shape: (3, 4)
